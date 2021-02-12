@@ -10,7 +10,7 @@
 | 15/0016018  |  Lucas Oliveira Silva |
 
 ## Sobre 
-Um jogo no estilo RPG de texto, onde o personagem precisa desvendar enigmas e escapar enquanto tenta fugir de um assassino cruel. 
+Um jogo no estilo RPG de texto, onde o personagem precisa desvendar enigmas enquanto tenta fugir de um assassino cruel. 
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em funcionamento.
