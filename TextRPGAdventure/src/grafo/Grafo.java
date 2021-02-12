@@ -13,11 +13,8 @@ public class Grafo {
 		arestas = new ArrayList<Aresta>();
 	}
 	
-	public Vertice addVertice(String nome){
-		Vertice vertice = new Vertice(nome);
+	public void addVertice(Vertice vertice){
 		vertices.add(vertice);
-
-		return vertice;
 	}
 
 	public Aresta addAresta(Vertice origem, Vertice destino){
@@ -38,13 +35,13 @@ public class Grafo {
 
 	public void imprimeGrafo(){
 		for(Vertice vertice : this.vertices){
-			System.out.print(vertice.nome);
+			System.out.print(vertice);
 			System.out.println(" ----> ");
-			for(Aresta aresta : vertice.adjacencias){
+			for(Aresta aresta : vertice.getAdjacencias()){
 				System.out.print("\t\t\t");
-				System.out.print(aresta.destino.nome);
+				System.out.print(aresta.getDestino().getNome());
 				System.out.print(" - ");
-				System.out.println("Peso:" + aresta.peso);
+				System.out.println("Peso:" + aresta.getPeso());
 			}
 		}
 	}

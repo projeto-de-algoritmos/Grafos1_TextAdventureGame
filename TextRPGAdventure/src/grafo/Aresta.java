@@ -3,9 +3,9 @@ package grafo;
 
 public class Aresta {
 
-	Double peso;
-	Vertice origem;
-	Vertice destino;
+	private Double peso;
+	private Vertice origem;
+	private Vertice destino;
 
 	public Aresta(Double peso, Vertice origem, Vertice destino){
 		this.peso = peso;

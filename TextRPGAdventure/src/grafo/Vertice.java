@@ -3,14 +3,14 @@ package grafo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vertice {
+public abstract class Vertice {
 	
-	String nome;
-	List<Aresta> adjacencias;
+	private String nome;
+	private List<Aresta> adjacencias;
 	
 	public Vertice(String nome){
 		this.nome = nome;
-		adjacencias = new ArrayList<Aresta>();
+		adjacencias = new ArrayList<>();
 	}
 	
 	public void addAdjacencias(Aresta aresta) {
@@ -24,4 +24,5 @@ public class Vertice {
 	public List<Aresta> getAdjacencias() {
 		return adjacencias;
 	}
+
 }
