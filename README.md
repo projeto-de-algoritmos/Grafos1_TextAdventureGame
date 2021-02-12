@@ -16,8 +16,8 @@ Um jogo no estilo RPG de texto, onde o personagem precisa desvendar enigmas e es
 Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 ## Instalação 
-**Linguagem**: Java 
-**Framework**: - 
+**Linguagem**: Java  
+**Framework**: -  
 Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
 
 ## Uso 
