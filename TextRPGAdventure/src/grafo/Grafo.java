@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Grafo {
 	
-	List<Vertice> vertices;
-	List<Aresta> arestas;
+	private List<Vertice> vertices;
+	private List<Aresta> arestas;
 	
 	public Grafo(){
 		vertices = new ArrayList<Vertice>();

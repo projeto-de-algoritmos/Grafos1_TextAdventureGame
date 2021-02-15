@@ -18,4 +18,6 @@ public abstract class Item {
         return nome;
     }
 
+    public abstract void usar();
+
 }

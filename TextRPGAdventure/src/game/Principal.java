@@ -1,11 +1,10 @@
 package game;
 
 import game.models.Area;
-import game.models.item.Item;
-import game.models.item.ItemConsumivel;
+import game.models.JogoController;
+import game.models.item.PocaoCura;
 import grafo.Aresta;
 import grafo.Grafo;
-import grafo.Vertice;
 
 public class Principal {
 
@@ -17,9 +16,9 @@ public class Principal {
         Area b = new Area("Travessa do Tranco", "Um local perigoso e cheio de olhares hostis e silenciosos.");
         Area c = new Area("Banco Gringotes", "O lugar mais seguro para guardar seu dinheiro.");
 
-        Item pocaoHp = new ItemConsumivel("Poção de Cura", "Uma poção que te cura.", 3);
+        PocaoCura pocaoCuraSuperior = new PocaoCura("Poção de Cura Superior", "Uma poção que te cura.", 3, 15);
 
-        a.addItem(pocaoHp);
+        a.addItem(pocaoCuraSuperior);
 
         grafo.addVertice(a);
         grafo.addVertice(b);
@@ -31,6 +30,9 @@ public class Principal {
 
         grafo.imprimeGrafo();
         System.out.println("\n\n\n");
+
+        JogoController game = JogoController.getJogo();
+        //game.startGame("Caio", 15);
 
 
     }

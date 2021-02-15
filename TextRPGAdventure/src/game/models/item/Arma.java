@@ -1,6 +1,6 @@
 package game.models.item;
 
-public class Arma extends Item{
+public abstract class Arma extends Item{
 
     private Integer dano;
     private Integer durabilidade;
@@ -23,8 +23,15 @@ public class Arma extends Item{
         return durabilidade;
     }
 
-    public void setDurabilidade(Integer durabilidade) {
-        this.durabilidade = durabilidade;
+    public abstract void atacar();
+
+    @Override
+    public void usar() {
+        if(durabilidade > 0){
+            atacar();
+            durabilidade = durabilidade--;
+        }
+
     }
 
     @Override

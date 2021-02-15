@@ -1,8 +1,9 @@
 package game.models.item;
 
-public class ItemConsumivel extends Item{
+public abstract class ItemConsumivel extends Item{
 
     private Integer cargas;
+    private String mensagemConsumir;
 
     public ItemConsumivel(String nome, String descricao, Integer cargas){
         super(nome, descricao);
@@ -17,6 +18,17 @@ public class ItemConsumivel extends Item{
         this.cargas = cargas;
     }
 
+    public abstract void consumir();
+
+    @Override
+    public void usar() {
+        if(cargas > 0){
+            consumir();
+            cargas = cargas--;
+        }
+
+    }
+
     @Override
     public String toString() {
         return "Item{" +
@@ -25,4 +37,6 @@ public class ItemConsumivel extends Item{
                 ", cargas='" + cargas + '\'' +
                 '}';
     }
+
+
 }
