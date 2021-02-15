@@ -53,4 +53,10 @@ public class Grafo {
 	public List<Aresta> getArestas() {
 		return arestas;
 	}
+
+	public void resetVertices() {
+		for (Vertice vertice : vertices) {
+			vertice.setVisitado(false);
+		}
+	}
 }

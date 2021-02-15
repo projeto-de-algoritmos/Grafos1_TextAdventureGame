@@ -7,14 +7,20 @@ public abstract class Vertice {
 	
 	private String nome;
 	private List<Aresta> adjacencias;
+	private boolean visitado;
 	
 	public Vertice(String nome){
 		this.nome = nome;
 		adjacencias = new ArrayList<>();
+		visitado = false;
 	}
-	
+
 	public void addAdjacencias(Aresta aresta) {
 		adjacencias.add(aresta);
+	}
+
+	public void marcarComoVisitado() {
+		visitado = true;
 	}
 	
 	public String getNome() {
@@ -25,4 +31,11 @@ public abstract class Vertice {
 		return adjacencias;
 	}
 
+	public boolean isVisitado() {
+		return visitado;
+	}
+
+	public void setVisitado(boolean visitado) {
+		this.visitado = visitado;
+	}
 }
