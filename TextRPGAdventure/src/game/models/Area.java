@@ -50,6 +50,22 @@ public class Area extends Vertice {
         return itens;
     }
 
+    public void mostrarDescricaoDetalhada(String textoEspecífico) {
+        System.out.println(this.getDescricao());
+
+        System.out.println("Ao olhar mais atentamente, é possivel ver as seguintes coisas: ");
+
+        for(Item item : getItens()){
+            System.out.println(item.getDescricao());
+        }
+
+        System.out.println(textoEspecífico);
+    }
+
+    public void mostrarDescricaoDetalhada() {
+        mostrarDescricaoDetalhada("");
+    }
+
     @Override
     public String toString() {
         return "Area{" +

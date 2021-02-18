@@ -41,6 +41,7 @@ public class Navegacao {
                 enfileirar(vertice);
                 vertice.marcarComoVisitado();
                 if (vertice.getNome().equals(nome)) {
+                    grafo.resetVertices();
                     return vertice;
                 }
 
@@ -53,6 +54,7 @@ public class Navegacao {
                             destino.marcarComoVisitado();
 
                             if (destino.getNome().equals(nome)) {
+                                grafo.resetVertices();
                                 return vertice;
                             }
 

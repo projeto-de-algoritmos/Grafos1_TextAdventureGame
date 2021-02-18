@@ -14,7 +14,7 @@ public class PocaoCura extends ItemConsumivel{
     @Override
     public void consumir() {
         System.out.println("Você se sente rejuvenescido ao tomar um gole !");
-        JogoController.adicionarVida(quantidadeCurada);
+        JogoController.getJogo().adicionarVida(quantidadeCurada);
     }
 
 }

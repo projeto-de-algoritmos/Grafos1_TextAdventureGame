@@ -9,32 +9,28 @@ import java.util.List;
 
 public class Jogador extends Personagem{
 
-    private List<Item> itensColetados;
+    private String areaAtual;
 
-    public Jogador(String nome, Integer vida){
+    public Jogador(String nome, Integer vida, String areaAtual){
         super(nome, vida);
-        itensColetados = new ArrayList<>();
-    }
-
-    public List<Item> getItensColetados() {
-        return itensColetados;
-    }
-
-    public void addItem(Item e){
-        this.itensColetados.add(e);
+        this.areaAtual = areaAtual;
     }
 
     public void verificarItensEsgotadosOuQuebrados(){
-        for(Item item : getItensColetados()){
+        for(Item item : getItens()){
             if(item instanceof ItemConsumivel) {
                 if(((ItemConsumivel) item).getCargas() <= 0){
-                    getItensColetados().remove(item);
+                    getItens().remove(item);
                 }
             } else if(item instanceof Arma) {
                 if(((Arma) item).getDurabilidade() <= 0){
-                    getItensColetados().remove(item);
+                    getItens().remove(item);
                 }
             }
         }
+    }
+
+    public String getAreaAtual() {
+        return areaAtual;
     }
 }
