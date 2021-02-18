@@ -33,4 +33,8 @@ public class Jogador extends Personagem{
     public String getAreaAtual() {
         return areaAtual;
     }
+
+    public void setAreaAtual(String areaAtual) {
+        this.areaAtual = areaAtual;
+    }
 }

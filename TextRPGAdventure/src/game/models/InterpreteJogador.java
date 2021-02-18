@@ -95,6 +95,20 @@ public class InterpreteJogador {
                }
 
                break;
+           case ANDAR:
+               if(comandos.length > 1){
+                   String nomeSala = comandos[1];
+
+                   Area areaIndicada = JogoController.getJogo().identificarAreaConectada();
+
+                   if(areaIndicada != null){
+                        JogoController.getJogo().atualizarAreaAtual(areaIndicada.getNome());
+                   } else {
+                       System.out.println("Esse movimento não é permitido !");
+                   }
+               }
+
+               break;
            case OLHAR:
                JogoController.getJogo().identificarAreaAtual().mostrarDescricaoDetalhada();
                break;

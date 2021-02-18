@@ -124,4 +124,8 @@ public final class JogoController {
         System.out.println ("O item " + e.getNome() + " foi coletado com sucesso !");
     }
 
+    public void atualizarAreaAtual(String area){
+        jogador.setAreaAtual(area);
+    }
+
 }
