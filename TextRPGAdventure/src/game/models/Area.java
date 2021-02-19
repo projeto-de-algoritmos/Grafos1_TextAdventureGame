@@ -1,6 +1,7 @@
 package game.models;
 
 import game.models.item.Item;
+import grafo.Aresta;
 import grafo.Vertice;
 
 import java.util.ArrayList;
@@ -53,10 +54,27 @@ public class Area extends Vertice {
     public void mostrarDescricaoDetalhada(String textoEspecífico) {
         System.out.println(this.getDescricao());
 
-        System.out.println("Ao olhar mais atentamente, é possivel ver as seguintes coisas: ");
+        // ITENS
 
-        for(Item item : getItens()){
-            System.out.println(item.getDescricao());
+        if(getItens() != null && getItens().size() > 0){
+            System.out.println("\nAo olhar mais atentamente, é possivel ver as seguintes coisas: ");
+
+            for(Item item : getItens()){
+                System.out.println(item.getDescricao());
+            }
+        } else {
+            System.out.println("Não há nada demais para ver aqui.");
+        }
+
+        //CAMINHOS
+        if(getAdjacencias() != null && getAdjacencias().size() > 0){
+            System.out.println("\nE é possível identificar os seguintes caminhos para ir: ");
+
+            for(Aresta salaAdjacente: getAdjacencias()){
+                System.out.println(salaAdjacente.getDestino().getNome());
+            }
+        } else {
+            System.out.println("Não há caminhos aparentes para sair daqui.");
         }
 
         System.out.println(textoEspecífico);

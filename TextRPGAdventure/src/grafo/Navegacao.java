@@ -15,7 +15,6 @@ public class Navegacao {
             if (!vertice.isVisitado()) {
                 enfileirar(vertice);
                 vertice.marcarComoVisitado();
-                System.out.println(vertice.getNome());
 
                 while (!fila.isEmpty()) {
                     Vertice verticeAtual = desenfileirar();
@@ -24,7 +23,6 @@ public class Navegacao {
                         Vertice destino = vizinho.getDestino();
                         if (!destino.isVisitado()) {
                             destino.marcarComoVisitado();
-                            System.out.println(destino.getNome());
 
                             enfileirar(destino);
                         }
@@ -42,7 +40,7 @@ public class Navegacao {
             if (!vertice.isVisitado()) {
                 enfileirar(vertice);
                 vertice.marcarComoVisitado();
-                if (vertice.getNome().equals(nome)) {
+                if (vertice.getNome().toLowerCase().contains(nome.toLowerCase())) {
                     grafo.resetVertices();
                     return vertice;
                 }
@@ -55,16 +53,16 @@ public class Navegacao {
                         if (!destino.isVisitado()) {
                             destino.marcarComoVisitado();
 
-                            if (destino.getNome().equals(nome)) {
+                            if (destino.getNome().toLowerCase().contains(nome.toLowerCase())) {
                                 grafo.resetVertices();
-                                return vertice;
+                                return destino;
                             }
 
                             enfileirar(destino);
                         }
                     }
                 }
-
+                grafo.resetVertices();
             }
         }
 
@@ -95,18 +93,19 @@ public class Navegacao {
             for (Aresta vizinho : verticeAtual.getAdjacencias()) {
                 Vertice destino = vizinho.getDestino();
                 if (!destino.isVisitado()) {
-                    if (destino.getNome().equals(salaFinal)) {
+                    if (destino.getNome().toLowerCase().contains(salaFinal.toLowerCase())) {
+                        grafo.resetVertices();
                         return destino;
                     }
 
                     destino.marcarComoVisitado();
-                    System.out.println(destino.getNome());
 
                     enfileirar(destino);
                 }
             }
-        }
 
+            grafo.resetVertices();
+        }
 
         return null;
     }

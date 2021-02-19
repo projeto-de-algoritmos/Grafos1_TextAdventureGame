@@ -1,6 +1,7 @@
 package game.models;
 
 import game.models.item.Item;
+import grafo.Aresta;
 import grafo.Grafo;
 import grafo.Navegacao;
 import grafo.Vertice;
@@ -15,7 +16,7 @@ public final class JogoController {
     private static InterpreteJogador interpreteJogador;
 
 
-    public void iniciarJogo(String nome, Integer vida, String areaInicial){
+    public void iniciarJogo(String nome, Integer vida, Area areaInicial){
         boolean jogoAcabou = false;
         jogador = new Jogador(nome, vida, areaInicial);
         interpreteJogador = new InterpreteJogador();
@@ -24,7 +25,7 @@ public final class JogoController {
 
         //Andamento do jogo - Só para no fim do jogo;
         while(!jogoAcabou){
-            System.out.println("================");
+            System.out.println("=============================================================");
             // 1 - identifica a área atual
             Area areaAtual = identificarAreaAtual();
 
@@ -64,7 +65,7 @@ public final class JogoController {
         jogador.setVida(vidaAtual + quantidade);
     }
 
-    public String getAreaAtualJogador(){
+    public Area getAreaAtualJogador(){
         return jogador.getAreaAtual();
     };
 
@@ -91,7 +92,7 @@ public final class JogoController {
     public Area identificarAreaAtual(){
         Navegacao navegacao = new Navegacao();
 
-        Vertice area = navegacao.buscaVertice(grafo, this.getAreaAtualJogador());
+        Vertice area = navegacao.buscaVertice(grafo, this.getAreaAtualJogador().getNome());
 
         if(area instanceof Area) {
             Area areaAtual = ((Area) area);
@@ -104,6 +105,14 @@ public final class JogoController {
 
     public void addArea(Area area){
         this.grafo.addVertice(area);
+    }
+
+    public void conectarArea(Double distancia, Area origem, Area destino){
+        this.grafo.addAresta(distancia, origem, destino);
+    }
+
+    public void conectarArea(Area origem, Area destino){
+        this.grafo.addAresta(origem, destino);
     }
 
     public Item utilizarItemInventario(String nomeItemDesejado) {
@@ -124,14 +133,22 @@ public final class JogoController {
         System.out.println ("O item " + e.getNome() + " foi coletado com sucesso !");
     }
 
-    public void atualizarAreaAtual(String area){
+    public void atualizarAreaAtual(Area area){
         jogador.setAreaAtual(area);
     }
 
     public Area identificarAreaConectada(String salaAtual, String salaFinal) {
         Navegacao navegacao = new Navegacao();
-        Area areaFinal = (Area) navegacao.getSalaFinal(JogoController.getJogo().grafo, salaAtual, salaFinal);
 
-        return areaFinal;
+        Vertice verticeFinal = navegacao.getSalaFinal(JogoController.getJogo().grafo, salaAtual, salaFinal);
+
+        if(verticeFinal instanceof Area){
+            Area areaFinal =  (Area) verticeFinal;
+
+            return areaFinal;
+        }
+
+        return null;
     }
+
 }

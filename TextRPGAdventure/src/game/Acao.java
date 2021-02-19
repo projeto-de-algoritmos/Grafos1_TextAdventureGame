@@ -7,7 +7,7 @@ public enum Acao {
 
     OLHAR(new String[]{"olhar"}, TipoAcao.OLHAR),
     PEGAR(new String[]{"pegar", "catar", "segurar", "coletar"}, TipoAcao.PEGAR),
-    ANDAR(new String[]{"andar", "mover", "locomover"}, TipoAcao.ANDAR),
+    ANDAR(new String[]{"andar", "mover", "locomover", "ir"}, TipoAcao.ANDAR),
     USAR(new String[]{"usar", "utilizar"}, TipoAcao.USAR),
     LER(new String[]{"ler", "folhear"}, TipoAcao.LER),
     NADA(new String[]{" "}, TipoAcao.NADA);

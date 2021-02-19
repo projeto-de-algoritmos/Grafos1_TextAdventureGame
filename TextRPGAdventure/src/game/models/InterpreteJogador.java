@@ -98,15 +98,20 @@ public class InterpreteJogador {
            case ANDAR:
                if(comandos.length > 1){
                    String nomeSala = comandos[1];
-                   String salaAtual = JogoController.getJogo().getAreaAtualJogador();
 
-                   Area areaIndicada = JogoController.getJogo().identificarAreaConectada(salaAtual, nomeSala);
+                   Area salaAtual = JogoController.getJogo().getAreaAtualJogador();
+
+                   Area areaIndicada = JogoController.getJogo().identificarAreaConectada(salaAtual.getNome(), nomeSala);
 
                    if(areaIndicada != null){
-                        JogoController.getJogo().atualizarAreaAtual(areaIndicada.getNome());
+                        JogoController.getJogo().atualizarAreaAtual(areaIndicada);
                    } else {
                        System.out.println("Esse movimento não é permitido !");
                    }
+
+                   return acao;
+               } else {
+                   System.out.println("Especifique para onde deseja ir !");
                }
 
                break;

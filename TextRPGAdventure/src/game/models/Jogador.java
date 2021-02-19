@@ -9,9 +9,9 @@ import java.util.List;
 
 public class Jogador extends Personagem{
 
-    private String areaAtual;
+    private Area areaAtual;
 
-    public Jogador(String nome, Integer vida, String areaAtual){
+    public Jogador(String nome, Integer vida, Area areaAtual){
         super(nome, vida);
         this.areaAtual = areaAtual;
     }
@@ -30,11 +30,11 @@ public class Jogador extends Personagem{
         }
     }
 
-    public String getAreaAtual() {
+    public Area getAreaAtual() {
         return areaAtual;
     }
 
-    public void setAreaAtual(String areaAtual) {
+    public void setAreaAtual(Area areaAtual) {
         this.areaAtual = areaAtual;
     }
 }

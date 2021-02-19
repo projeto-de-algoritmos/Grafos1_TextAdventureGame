@@ -1,6 +1,7 @@
 package game;
 
 import game.models.Area;
+import game.models.Imagens;
 import game.models.JogoController;
 import game.models.item.ItemDecorativo;
 import game.models.item.ItemLegivel;
@@ -28,11 +29,19 @@ public class Principal {
         quartoEscuro.addItem(espelho);
         quartoEscuro.addItem(diario);
 
+        Area banheiroEscuro = new Area("Banheiro Escuro", "Um banheiro com cheiro pútrido. O chão parece estar coberto por uma espécie de gosma pegajosa.");
+
         jogo.addArea(quartoEscuro);
+        jogo.addArea(banheiroEscuro);
+
+        jogo.conectarArea(quartoEscuro, banheiroEscuro);
+        jogo.conectarArea(banheiroEscuro, quartoEscuro);
 
         System.out.println("\n\n\n");
 
-        jogo.iniciarJogo("Caio", 15, "Quarto Escuro");
+        System.out.println(Imagens.returnPlaca());
+
+        jogo.iniciarJogo("Caio", 15, quartoEscuro);
 
     }
 
