@@ -128,4 +128,10 @@ public final class JogoController {
         jogador.setAreaAtual(area);
     }
 
+    public Area identificarAreaConectada(String salaAtual, String salaFinal) {
+        Navegacao navegacao = new Navegacao();
+        Area areaFinal = (Area) navegacao.getSalaFinal(JogoController.getJogo().grafo, salaAtual, salaFinal);
+
+        return areaFinal;
+    }
 }

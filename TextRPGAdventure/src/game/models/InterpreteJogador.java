@@ -98,8 +98,9 @@ public class InterpreteJogador {
            case ANDAR:
                if(comandos.length > 1){
                    String nomeSala = comandos[1];
+                   String salaAtual = JogoController.getJogo().getAreaAtualJogador();
 
-                   Area areaIndicada = JogoController.getJogo().identificarAreaConectada();
+                   Area areaIndicada = JogoController.getJogo().identificarAreaConectada(salaAtual, nomeSala);
 
                    if(areaIndicada != null){
                         JogoController.getJogo().atualizarAreaAtual(areaIndicada.getNome());

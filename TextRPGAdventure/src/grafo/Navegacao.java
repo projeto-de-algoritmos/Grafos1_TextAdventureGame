@@ -1,5 +1,7 @@
 package grafo;
 
+import game.models.Area;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,5 +81,33 @@ public class Navegacao {
         } else {
             return null;
         }
+    }
+
+    public Vertice getSalaFinal(Grafo grafo, String salaInicial, String salaFinal) {
+        Vertice verticeInicial = buscaVertice(grafo, salaInicial);
+
+        enfileirar(verticeInicial);
+        verticeInicial.marcarComoVisitado();
+
+        while (!fila.isEmpty()) {
+            Vertice verticeAtual = desenfileirar();
+
+            for (Aresta vizinho : verticeAtual.getAdjacencias()) {
+                Vertice destino = vizinho.getDestino();
+                if (!destino.isVisitado()) {
+                    if (destino.getNome().equals(salaFinal)) {
+                        return destino;
+                    }
+
+                    destino.marcarComoVisitado();
+                    System.out.println(destino.getNome());
+
+                    enfileirar(destino);
+                }
+            }
+        }
+
+
+        return null;
     }
 }
