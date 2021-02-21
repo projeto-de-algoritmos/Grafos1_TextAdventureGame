@@ -8,8 +8,8 @@ public class ItemLegivel extends Item{
 
     private List<String> textos;
 
-    public ItemLegivel(String nome, String descricao, List<String> textos){
-        super(nome, descricao);
+    public ItemLegivel(String nome, String descricao, Boolean rastreavel, List<String> textos){
+        super(nome, descricao, rastreavel);
 
         if(textos != null) {
             this.textos = textos;

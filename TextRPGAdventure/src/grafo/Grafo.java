@@ -3,7 +3,7 @@ package grafo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Grafo {
+public class Grafo{
 	
 	private List<Vertice> vertices;
 	private List<Aresta> arestas;
@@ -59,4 +59,5 @@ public class Grafo {
 			vertice.setVisitado(false);
 		}
 	}
+
 }

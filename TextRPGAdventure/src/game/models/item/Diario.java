@@ -3,7 +3,7 @@ package game.models.item;
 public class Diario extends Item{
 
     public Diario(String nome, String descricao){
-        super(nome, descricao);
+        super(nome, descricao, false);
     }
 
     @Override

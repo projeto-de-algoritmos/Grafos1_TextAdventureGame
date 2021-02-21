@@ -5,8 +5,8 @@ public abstract class Arma extends Item{
     private Integer dano;
     private Integer durabilidade;
 
-    public Arma(String nome, String descricao, Integer dano, Integer durabilidade){
-        super(nome, descricao);
+    public Arma(String nome, String descricao, Boolean rastreavel, Integer dano, Integer durabilidade){
+        super(nome, descricao, rastreavel);
         this.dano = dano;
         this.durabilidade = durabilidade;
     }

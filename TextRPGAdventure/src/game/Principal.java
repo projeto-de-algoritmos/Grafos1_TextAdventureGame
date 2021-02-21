@@ -3,8 +3,7 @@ package game;
 import game.models.Area;
 import game.models.Imagens;
 import game.models.JogoController;
-import game.models.item.ItemDecorativo;
-import game.models.item.ItemLegivel;
+import game.models.item.*;
 import game.servicos.Arquivo;
 
 import java.io.FileNotFoundException;
@@ -17,37 +16,55 @@ public class Principal {
 
         JogoController jogo = JogoController.getJogo();
 
-        Area quartoEscuro = new Area("Quarto Escuro", "Você se encontra em um quarto repleto de sombras e pouca iluminação. Suas mãos encontram-se machucadas e você sente o chão frio sob seus pés.");
+        Area salaEscura = new Area("Sala Escura", "Você se encontra em uma sala repleta de sombras e pouca iluminação. Suas mãos encontram-se machucadas e você sente o chão frio sob seus pés.");
 
-        ItemDecorativo espelho = new ItemDecorativo("Espelho", "Um espelho quebrado que te mostra seu reflexo borrado.");
+        ItemDecorativo espelho = new ItemDecorativo("Espelho", "Um espelho quebrado que te mostra seu reflexo borrado.", false);
 
         List<String> textosDiario = new ArrayList<>();
 
         textosDiario.add("Ao abrir o diário, você consegue ler entre as folhas sujas e amassadas, a seguinte passagem: ");
         textosDiario.add("'Estou aqui a mais ou menos 128 dias. Não sei mais se consigo escapar. O carrasco deixa água e restos de comida, e sai. Eu nem ao menos tenho força para tentar enfrentá-lo.'");
 
-        ItemLegivel diario = new ItemLegivel("Diário Velho", "Um velho diário gasto pelo tempo.", textosDiario);
+        ItemLegivel diario = new ItemLegivel("Diário Velho", "Um velho diário gasto pelo tempo.", false, textosDiario);
 
-        quartoEscuro.addItem(espelho);
-        quartoEscuro.addItem(diario);
+        Caixa caixa = new Caixa("Caixa Trancada", "Uma pequena caixa trancada.", false, "Esta caixa está trancada !");
+
+        Rastreador rastreador = new Rastreador("Rastreador", "Uma espécie de radar altamente tecnológico que provavelmente deu muito trabalho para ser desenvolvido.", false);
+
+        salaEscura.addItem(espelho);
+        salaEscura.addItem(diario);
+        salaEscura.addItem(caixa);
+        salaEscura.addItem(rastreador);
 
         Area banheiroEscuro = new Area("Banheiro Escuro", "Um banheiro com cheiro pútrido. O chão parece estar coberto por uma espécie de gosma pegajosa.");
 
-        jogo.addArea(quartoEscuro);
-        jogo.addArea(banheiroEscuro);
+        Area garagem = new Area("Garagem", "Um leve cheiro de óleo de motor, e várias bugigangas espalhadas pelo chão, mas nada muito interessante.");
+        Area porao = new Area("Porão", "Um porão completamente escuro, cheios de madeiras velhas e outras coisas descartadas. Alguma coisa parece brilhar na escuridão.");
 
-        jogo.conectarArea(quartoEscuro, banheiroEscuro);
-        jogo.conectarArea(banheiroEscuro, quartoEscuro);
+        ItemChave chave = new ItemChave("Chave Pequena", "Uma pequena chave reluzente.", true, caixa, "Você conseguiu abrir a caixa !");
+        porao.addItem(chave);
+
+        jogo.addArea(salaEscura);
+        jogo.addArea(banheiroEscuro);
+        jogo.addArea(garagem);
+        jogo.addArea(porao);
+
+        jogo.conectarArea(salaEscura, banheiroEscuro);
+        jogo.conectarArea(banheiroEscuro, salaEscura);
+        jogo.conectarArea(salaEscura, garagem);
+        jogo.conectarArea(garagem, salaEscura);
+        jogo.conectarArea(garagem, porao);
+        jogo.conectarArea(porao, garagem);
 
         System.out.println("\n\n\n");
 
         try {
-            Arquivo.imprimeImagemAscii("placa");
+            Arquivo.imprimeImagemAscii("olhos");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        jogo.iniciarJogo("Caio", 15, quartoEscuro);
+        jogo.iniciarJogo("Caio", 15, salaEscura);
 
     }
 

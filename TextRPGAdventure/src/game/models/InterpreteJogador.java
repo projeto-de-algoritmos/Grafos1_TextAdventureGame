@@ -101,7 +101,7 @@ public class InterpreteJogador {
 
                    Area salaAtual = JogoController.getJogo().getAreaAtualJogador();
 
-                   Area areaIndicada = JogoController.getJogo().identificarAreaConectada(salaAtual.getNome(), nomeSala);
+                   Area areaIndicada = JogoController.getJogo().identificarAreaConectada(salaAtual, nomeSala);
 
                    if(areaIndicada != null){
                         JogoController.getJogo().atualizarAreaAtual(areaIndicada);

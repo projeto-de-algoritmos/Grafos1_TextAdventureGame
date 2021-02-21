@@ -1,12 +1,14 @@
 package grafo;
 
 import game.models.Area;
+import game.models.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Navegacao {
     private List<Vertice> fila = new ArrayList<>();
+
 
     public void buscaEmLargura(Grafo grafo) {
         List<Vertice> vertices = grafo.getVertices();
@@ -105,6 +107,16 @@ public class Navegacao {
             }
 
             grafo.resetVertices();
+        }
+
+        return null;
+    }
+
+    public Vertice retornarAreaConectada(Area areaAtual, String areaDesejada) {
+        for(Aresta areaConectada : areaAtual.getAdjacencias()){
+            if (areaConectada.getDestino().getNome().toLowerCase().contains(areaDesejada.toLowerCase())) {
+                return areaConectada.getDestino();
+            }
         }
 
         return null;

@@ -6,6 +6,8 @@ import grafo.Grafo;
 import grafo.Navegacao;
 import grafo.Vertice;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public final class JogoController {
@@ -137,10 +139,10 @@ public final class JogoController {
         jogador.setAreaAtual(area);
     }
 
-    public Area identificarAreaConectada(String salaAtual, String salaFinal) {
+    public Area identificarAreaConectada(Area salaAtual, String salaFinal) {
         Navegacao navegacao = new Navegacao();
 
-        Vertice verticeFinal = navegacao.getSalaFinal(JogoController.getJogo().grafo, salaAtual, salaFinal);
+        Vertice verticeFinal = navegacao.retornarAreaConectada(salaAtual, salaFinal);
 
         if(verticeFinal instanceof Area){
             Area areaFinal =  (Area) verticeFinal;
@@ -151,4 +153,24 @@ public final class JogoController {
         return null;
     }
 
+    public void imprimeMapaJogo(){
+        grafo.imprimeGrafo();
+    }
+
+    public List<Area> listarAreasJogo(){
+        List<Area> areas = new ArrayList<>();
+
+        for(Vertice vertice: grafo.getVertices()){
+            if(vertice instanceof Area){
+                Area area = (Area) vertice;
+                areas.add(area);
+            }
+        }
+
+        return areas;
+    }
+
+    public Grafo getGrafo() {
+        return grafo;
+    }
 }

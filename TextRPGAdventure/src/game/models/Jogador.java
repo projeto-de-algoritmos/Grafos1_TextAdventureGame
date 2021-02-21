@@ -2,6 +2,7 @@ package game.models;
 
 import game.models.item.Arma;
 import game.models.item.Item;
+import game.models.item.ItemChave;
 import game.models.item.ItemConsumivel;
 
 import java.util.ArrayList;
@@ -24,6 +25,10 @@ public class Jogador extends Personagem{
                 }
             } else if(item instanceof Arma) {
                 if(((Arma) item).getDurabilidade() <= 0){
+                    getItens().remove(item);
+                }
+            } else if (item instanceof ItemChave) {
+                if(((ItemChave) item).getItemDesbloqueavel().getDesbloqueado()){
                     getItens().remove(item);
                 }
             }
