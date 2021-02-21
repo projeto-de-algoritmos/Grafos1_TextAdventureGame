@@ -5,7 +5,9 @@ import game.models.Imagens;
 import game.models.JogoController;
 import game.models.item.ItemDecorativo;
 import game.models.item.ItemLegivel;
+import game.servicos.Arquivo;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +41,11 @@ public class Principal {
 
         System.out.println("\n\n\n");
 
-        System.out.println(Imagens.returnPlaca());
+        try {
+            Arquivo.imprimeImagemAscii("placa");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         jogo.iniciarJogo("Caio", 15, quartoEscuro);
 
