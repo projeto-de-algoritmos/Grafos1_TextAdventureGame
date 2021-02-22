@@ -13,7 +13,12 @@
 Um framework para desenvolvimento de jogos no estilo RPG de texto, todo baseado em grafos, onde é possível desenvolver diversos jogos diferentes utilizando uma hierarquia simples. 
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![Print 1](Imagens/imagem1.PNG)
+
+![Print 2](Imagens/imagem2.PNG)
+
+![Print 3](Imagens/imagem3.PNG)
+
 
 ## Instalação 
 **Linguagem**: Java
