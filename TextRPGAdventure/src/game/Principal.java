@@ -5,9 +5,13 @@ import game.models.Imagens;
 import game.models.JogoController;
 import game.models.item.*;
 import game.servicos.Arquivo;
+import grafo.Grafo;
+import grafo.Vertice;
+import grafo.navegacao.Navegacao;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Principal {
@@ -51,21 +55,30 @@ public class Principal {
 
         jogo.conectarArea(salaEscura, banheiroEscuro);
         jogo.conectarArea(banheiroEscuro, salaEscura);
-        jogo.conectarArea(salaEscura, garagem);
-        jogo.conectarArea(garagem, salaEscura);
-        jogo.conectarArea(garagem, porao);
-        jogo.conectarArea(porao, garagem);
+        jogo.conectarArea(2,  salaEscura, garagem);
+        jogo.conectarArea(2, garagem, salaEscura);
+        jogo.conectarArea(100,  salaEscura, porao);
+        jogo.conectarArea(10,  porao, salaEscura);
+        jogo.conectarArea(13, garagem, porao);
+        jogo.conectarArea(13, porao, garagem);
 
         System.out.println("\n\n\n");
 
-        try {
-            Arquivo.imprimeImagemAscii("olhos");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Arquivo.imprimeImagemAscii("olhos");
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
-        jogo.iniciarJogo("Caio", 15, salaEscura);
+//        jogo.iniciarJogo("Caio", 15, salaEscura);
 
+        testaMenorCaminho(jogo.getGrafo(), salaEscura, porao);
+    }
+
+    private static void testaMenorCaminho(Grafo grafo, Vertice inicio, Vertice fim) {
+        LinkedList<Vertice> caminho = Navegacao.menorCaminho(grafo, inicio, fim);
+        caminho.forEach(vertice -> System.out.print(vertice.getNome() + " → "));
+        System.out.print("↓");
     }
 
 }

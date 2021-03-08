@@ -1,9 +1,8 @@
 package game.models;
 
 import game.models.item.Item;
-import grafo.Aresta;
 import grafo.Grafo;
-import grafo.Navegacao;
+import grafo.navegacao.Navegacao;
 import grafo.Vertice;
 
 import java.util.ArrayList;
@@ -69,7 +68,7 @@ public final class JogoController {
 
     public Area getAreaAtualJogador(){
         return jogador.getAreaAtual();
-    };
+    }
 
     public Item coletarItem(String nomeItemDesejado) {
 
@@ -109,7 +108,7 @@ public final class JogoController {
         this.grafo.addVertice(area);
     }
 
-    public void conectarArea(Double distancia, Area origem, Area destino){
+    public void conectarArea(int distancia, Area origem, Area destino){
         this.grafo.addAresta(distancia, origem, destino);
     }
 

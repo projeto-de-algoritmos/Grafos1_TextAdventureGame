@@ -18,14 +18,14 @@ public class Grafo{
 	}
 
 	public Aresta addAresta(Vertice origem, Vertice destino){
-		Aresta aresta = new Aresta(1.0, origem, destino);
+		Aresta aresta = new Aresta(1, origem, destino);
 		origem.addAdjacencias(aresta);
 		arestas.add(aresta);
 
 		return aresta;
 	}
 
-	public Aresta addAresta(Double peso, Vertice origem, Vertice destino) {
+	public Aresta addAresta(int peso, Vertice origem, Vertice destino) {
 		Aresta aresta = new Aresta(peso, origem, destino);
 		origem.addAdjacencias(aresta);
 		arestas.add(aresta);
@@ -60,4 +60,8 @@ public class Grafo{
 		}
 	}
 
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
 }
